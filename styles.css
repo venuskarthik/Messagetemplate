@@ -1,0 +1,217 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Header styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #293241;
+  color: #fff;
+  padding: 8px 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+/* Content styles */
+.content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 50px; /* Prevent content from overlapping with fixed header */
+}
+
+.left-panel,
+.right-panel {
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.left-panel {
+  width: 300px;
+  background-color: #eeeded;
+}
+
+.right-panel {
+  flex: 1;
+  background-color: #f8f9fa;
+  padding-bottom: 80px; /* Prevent content from overlapping with footer */
+}
+
+/* Topic and message styles */
+.topic {
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.topic.selected {
+  font-weight: bold;
+  color: #293241; /* Blue color for selected topic */
+  background-color: #98c1d9;
+}
+
+.message-title {
+  padding: 1px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  text-align: right; 
+}
+
+.topic:hover {
+  background-color: #98c1d9;
+  font-stretch: expanded;
+}
+
+.message-box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.message-title {
+  color: #ee6c4d;
+  font-weight: bold;
+  
+}
+.message-title:hover {
+  background-color: #e9ecee;}
+
+.button-container {
+  position: static; /* Change to static to prevent overlapping */
+  margin-top: 10px; /* Add margin-top for spacing */
+  text-align: right; /* Align buttons to the right */
+}
+
+.whatsapp-button,
+.copy-button {
+  background-color: transparent;
+  color: #3d5a80;
+  border: 1px solid #3d5a80;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative; /* Add position relative for popup */
+}
+
+.whatsapp-button:hover,
+.copy-button:hover {
+  background-color: #3d5a80;
+  color: #fff;
+}
+
+.copy-button.clicked {
+  background-color: #3d5a80; /* Green color for clicked state */
+  color: #fff;
+}
+
+.whatsapp-button i,
+.copy-button i {
+  font-size: 16px;
+}
+
+/* Popup styles */
+.popup {
+  position: absolute;
+  bottom: calc(100% + 10px); /* Position above the button */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: #ee6c4d; /* Green color for popup */
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.popup::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: #ee6c4d transparent transparent transparent; /* Green color for triangle */
+}
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Footer styles */
+.footer {
+  padding: 5px;
+  font-size: 12px;
+  background-color: #f8f9fa;
+  color: #848486;
+  text-align: center;
+}
+
+.copyright {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+  .header {
+    padding: 8px 10px;
+  }
+
+  .content {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .left-panel {
+    width: 100%;
+  }
+
+  .footer {
+    padding: 5px;
+    font-size: 10px;
+  }
+}
